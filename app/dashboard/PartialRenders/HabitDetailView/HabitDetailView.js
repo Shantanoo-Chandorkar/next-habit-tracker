@@ -59,7 +59,7 @@ const HabitDetailView = ({ habit, onBack }) => {
         {view === 'monthly' ? (
           <MonthlyView habit={habitData} month={selectedMonth} year={selectedYear} setHabitData={setHabitData} />
         ) : (
-          <YearlyView habit={habitData} />
+          <YearlyView habit={habitData} month={selectedMonth} year={selectedYear} setHabitData={setHabitData} />
         )}
       </div>
     </div>
