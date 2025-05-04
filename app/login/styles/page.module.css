@@ -1,0 +1,120 @@
+.container {
+  min-height: 100vh;
+  background-color: #1a202c; /* Gray 900 */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: transparent;
+  color: #dbe5f0;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.backButton:hover {
+  color: #4299e1;
+}
+
+
+.loginForm {
+  background-color: #2d3748; /* Gray 800 */
+  padding: 2rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  width: 50%; 
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.error {
+  color: #e53e3e; /* Red 500 */
+  margin-bottom: 0.5rem;
+}
+
+.formGroup,
+.passwordGroup {
+  margin-bottom: 1.5rem;
+}
+
+.passwordGroup {
+  position: relative;
+}
+
+.label {
+  display: block;
+  color: #a0aec0; /* Gray 300 */
+  font-size: 0.875rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  position: relative;
+  box-shadow: 0 0 0 0 transparent; /* Equivalent to shadow-none */
+  appearance: none;
+  border: 1px solid #4a5568; /* Gray 600 */
+  border-radius: 0.25rem;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  color: #2d3748; /* Gray 800 */
+  line-height: 1.5;
+  outline: none;
+}
+
+.input:focus {
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* Blue 500 with opacity */
+}
+
+.toggleButton {
+  position: absolute;
+  top: 70%;
+  right: 12px;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  color: rgb(55, 50, 50); /* Gray 300 */
+  cursor: pointer;
+}
+
+.button {
+  background-color: #4299e1; /* Blue 500 */
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  width: 100%;
+  outline: none;
+}
+
+.button:hover {
+  background-color: #2b6cb0; /* Blue 700 */
+}
+
+.signupLink {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
+.signupLink a {
+  color: #4299e1; /* Blue 500 */
+  text-decoration: underline;
+}
+
+.signupLink a:hover {
+  text-decoration: none;
+}

@@ -1,0 +1,42 @@
+.monthGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  padding: 1rem 0;
+}
+
+.dayCell {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #f1f1f1;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.completed {
+  background-color: #4caf50;
+  color: white;
+  animation: pop 0.3s ease;
+}
+
+.disabled {
+  background-color: #ddd;
+  color: #999;
+  cursor: not-allowed;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

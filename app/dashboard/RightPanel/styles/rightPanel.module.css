@@ -1,0 +1,13 @@
+.rightPanel {
+  width: 250px;
+  background-color: #ffffff;
+  padding: 1.5rem 1rem;
+  border-left: 1px solid #ddd;
+}
+
+/* Tablet/Mobile */
+@media (max-width: 768px) {
+  .rightPanel {
+    display: none;
+  }
+}

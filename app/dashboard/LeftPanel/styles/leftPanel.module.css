@@ -1,0 +1,54 @@
+.leftPanel {
+  width: 220px;
+  background-color: #1e1e2f;
+  color: #fff;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #4fd1c5;
+}
+
+.nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.nav li {
+  margin: 1rem 0;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.nav li:hover {
+  background-color: #33334d;
+}
+
+/* Tablet/Mobile */
+@media (max-width: 768px) {
+  .leftPanel {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 1rem 0;
+  }
+
+  .nav ul {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav li {
+    margin: 0;
+    padding: 0.5rem;
+  }
+}

@@ -1,0 +1,19 @@
+.dashboardLayout {
+  display: flex;
+  min-height: 100vh;
+  height: 100vh;
+  background-color: #f9f9f9;
+  overflow: hidden; /* Prevent full-page scrollbar */
+}
+
+/* Tablet/Mobile */
+@media (max-width: 768px) {
+  .dashboardLayout {
+    flex-direction: column;
+  }
+}
+
+.mainContent {
+  display: flex;
+  flex: 1;
+}

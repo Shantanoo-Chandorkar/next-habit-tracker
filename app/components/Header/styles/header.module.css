@@ -1,0 +1,26 @@
+.header {
+  background-color: #2d3748; /* Dark gray */
+  color: white;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.loginButton {
+  background-color: #4299e1; /* Blue 500 */
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+}
+
+.loginButton:hover {
+  background-color: #2b6cb0; /* Blue 700 */
+}

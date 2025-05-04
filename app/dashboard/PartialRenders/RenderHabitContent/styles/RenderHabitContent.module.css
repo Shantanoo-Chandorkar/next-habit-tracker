@@ -1,0 +1,166 @@
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.controls button,
+.controls select {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  background-color: #0070f3;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.controls button:hover,
+.controls select:hover {
+  background-color: #005bb5;
+}
+
+.layoutOptions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.layoutOptions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0070f3;
+  color: white;
+  padding: 0.4rem 0.6rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.layoutOptions button:hover {
+  background-color: #005bb5;
+}
+
+.columnSelector {
+  display: flex;
+  align-items: center;
+  background-color: #0070f3;
+  border-radius: 6px;
+  padding: 0.3rem 0.4rem;
+  color: white;
+  font-size: 1rem;
+}
+
+.columnSelector select {
+  margin-left: 0.4rem;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.columnSelector select:focus {
+  outline: none;
+}
+
+.columnSelector select option{
+  border: none;
+  color: #0070f3;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.habitList {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
+  gap: 1rem;
+}
+
+.habitList.list {
+  animation: fadeSlideUp 0.4s ease-in;
+}
+
+.habitList.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: 1rem;
+  margin-top: 20px;
+  animation: fadeIn 0.4s ease-in;
+  transition: all 0.3s ease;
+}
+
+.list .habitElement {
+  opacity: 0;
+  animation: fadeInUp 0.4s ease forwards;
+  animation-delay: calc(0.03s * var(--i));
+  transform: scale(0.98);
+  transition: transform 0.2s;
+}
+
+.grid .habitElement {
+  opacity: 0;
+  transform: translateY(20px) scale(0.96);
+  animation: gridFadeIn 0.4s ease-out forwards;
+  animation-delay: calc(0.05s * var(--i));
+}
+
+@keyframes gridFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #ccc;
+  border-top: 2px solid #333;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

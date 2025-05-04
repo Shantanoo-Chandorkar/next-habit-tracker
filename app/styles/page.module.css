@@ -1,0 +1,19 @@
+.container {
+  min-height: 100vh;
+  background-color: #1a202c; /* Gray 900 */
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcomeText {
+  font-size: 2.25rem;
+  font-weight: bold;
+}
