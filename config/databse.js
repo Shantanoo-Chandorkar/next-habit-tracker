@@ -9,8 +9,6 @@ const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
       dbName: 'habit-tracker',
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
     });
 
     isConnected = true;
