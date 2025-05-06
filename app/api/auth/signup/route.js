@@ -1,6 +1,6 @@
 import { hash } from 'bcryptjs';
 import connectDB from '../../../../config/databse';
-import User from '@/models/User';
+import User from '../../../../models/User';
 
 export async function POST(req) {
   await connectDB();

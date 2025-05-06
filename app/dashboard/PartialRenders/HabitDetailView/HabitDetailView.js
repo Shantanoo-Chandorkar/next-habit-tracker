@@ -23,7 +23,7 @@ const HabitDetailView = ({ habit, onBack }) => {
     <div className={styles.detailContainer}>
       <div className={styles.header}>
         <button onClick={onBack} className={styles.backBtn}>← Back</button>
-        <h2>{`${habitData.title} - ${months[selectedMonth]} Overview`}</h2>
+        <h2>{`${habitData.title} - ${view === 'monthly' ? months[selectedMonth] : selectedYear} Overview`}</h2>
 
         <div className={styles.dropdownContainer}>
           <select value={view} onChange={(e) => setView(e.target.value)}>
@@ -59,7 +59,7 @@ const HabitDetailView = ({ habit, onBack }) => {
         {view === 'monthly' ? (
           <MonthlyView habit={habitData} month={selectedMonth} year={selectedYear} setHabitData={setHabitData} />
         ) : (
-          <YearlyView habit={habitData} />
+          <YearlyView habit={habitData} month={selectedMonth} year={selectedYear} setHabitData={setHabitData} />
         )}
       </div>
     </div>

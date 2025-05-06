@@ -52,15 +52,21 @@ const MonthlyView = ({ habit, month, year, setHabitData }) => {
       ))}
 
       {Array.from({ length: daysInMonth }, (_, index) => {
-        const day = index + 1;
+        const currentDay = index + 1;
+        const dateObj = new Date(Date.UTC(year, month, currentDay));
+        const formattedDate = dateObj.toLocaleDateString('en-US', {
+          weekday: 'short',
+          month: 'short',
+          day: 'numeric',
+        });
         return (
           <div
-            key={day}
-            className={`${styles.dayCell} ${isCompleted(day) ? styles.completed : ''} ${isFutureDay(day) ? styles.disabled : ''}`}
-            onClick={() => !isFutureDay(day) && handleDotClick(day)}
-            title={`Day ${day}`}
+            key={currentDay}
+            className={`${styles.dayCell} ${isCompleted(currentDay) ? styles.completed : ''} ${isFutureDay(currentDay) ? styles.disabled : ''}`}
+            onClick={() => !isFutureDay(currentDay) && handleDotClick(currentDay)}
+            title={`${formattedDate}`}
           >
-            {day}
+            {currentDay}
           </div>
         );
       })}
