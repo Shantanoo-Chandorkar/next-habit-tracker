@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import styles from './styles/page.module.css';
 
@@ -56,7 +57,18 @@ const SignupPage = () => {
       setLoading(false);
 
       if (response.ok) {
-        router.push('/login');
+        // Auto-login the user using credentials
+        const result = await signIn('credentials', {
+          redirect: false,
+          email,
+          password,
+        });
+
+        if (result?.ok) {
+          router.push('/dashboard');
+        } else {
+          setErrors({ signup: result.error || 'Login failed after signup.' });
+        }
       } else {
         setErrors({ signup: data.message || 'Something went wrong during signup.' });
       }

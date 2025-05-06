@@ -39,7 +39,39 @@ const getWeeksInMonth = (year, month) => {
   return weeks;
 };
 
-const YearlyView = ({ habit, year }) => {
+const YearlyView = ({ habit, year, setHabitData }) => {
+  const { dispatch } = useHabitContext();
+
+  const isCompleted = (day, month) => {
+    const dayDate = new Date(Date.UTC(year, month, day));
+    const dayOfYear = getDayOfYear(dayDate);
+    return habit.completedDaysByYear?.[year]?.includes(dayOfYear);
+  };
+
+  const handleDotClick = async (day, month) => {
+    const dateObj = new Date(Date.UTC(year, month, day));
+    const dayOfYear = getDayOfYear(dateObj);
+
+    const res = await fetch(`/api/habits/${habit._id}/complete`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ year, dayOfYear }),
+    });
+
+    if (res.ok) {
+      const updatedHabit = await res.json();
+      setHabitData(updatedHabit); // Update the local state with the new habit data
+      dispatch({ type: 'UPDATE_HABIT', payload: updatedHabit });
+    }
+  };
+
+  const isFutureDay = (day, month) => {
+    const date = new Date(Date.UTC(year, month, day));
+    const now = new Date();
+    return date > now;
+  };
+
   return (
     <div className={styles.yearGrid}>
       {months.map((month, monthIndex) => {
@@ -51,15 +83,19 @@ const YearlyView = ({ habit, year }) => {
               {weeks.map((week, weekIndex) => (
                 <div key={weekIndex} className={styles.weekRow}>
                   {week.map((day, dayIndex) => {
-                    const dayDate = new Date(Date.UTC(year, monthIndex, day));
-                    const dayOfYear = getDayOfYear(dayDate);
-                    const isCompleted = habit.completedDaysByYear?.[year]?.includes(dayOfYear);
+                    const dateObj = new Date(Date.UTC(year, monthIndex, day));
+                    const formattedDate = dateObj.toLocaleDateString('en-US', {
+                      weekday: 'short',
+                      month: 'short',
+                      day: 'numeric',
+                    });
 
                     return (
                       <span
                         key={dayIndex}
-                        className={`${styles.dayDot} ${isCompleted ? styles.completed : ''}`}
-                        title={`Day ${day}`}
+                        className={`${styles.dayDot} ${isCompleted(day, monthIndex) ? styles.completed : ''} ${isFutureDay(day, monthIndex) ? styles.disabled : ''}`}
+                        onClick={() => !isFutureDay(day, monthIndex) && handleDotClick(day, monthIndex)}
+                        title={`Hello Day ${formattedDate}`}
                       />
                     );
                   })}

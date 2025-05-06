@@ -23,7 +23,7 @@ const HabitDetailView = ({ habit, onBack }) => {
     <div className={styles.detailContainer}>
       <div className={styles.header}>
         <button onClick={onBack} className={styles.backBtn}>← Back</button>
-        <h2>{`${habitData.title} - ${months[selectedMonth]} Overview`}</h2>
+        <h2>{`${habitData.title} - ${view === 'monthly' ? months[selectedMonth] : selectedYear} Overview`}</h2>
 
         <div className={styles.dropdownContainer}>
           <select value={view} onChange={(e) => setView(e.target.value)}>

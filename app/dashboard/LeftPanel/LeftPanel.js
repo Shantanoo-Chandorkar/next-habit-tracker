@@ -10,7 +10,7 @@ const LeftPanel = () => {
       <div className={styles.logo}>Habit Tracker</div>
       <nav className={styles.nav}>
         <ul>
-          <li>All Habits</li>
+          <li>Habits</li>
           <li>Categories</li>
           <li>Statistics</li>
           <li onClick={() => signOut({ callbackUrl: '/' })}>Logout</li>
