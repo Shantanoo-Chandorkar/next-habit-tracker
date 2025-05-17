@@ -8,7 +8,6 @@ const UserPreferencesSchema = new mongoose.Schema({
     type: {
       type: String,
       enum: ['list', 'grid'],
-      default: 'list',
     },
   },
 }, { timestamps: true });
