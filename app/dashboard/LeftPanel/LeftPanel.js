@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { signOut } from 'next-auth/react';
 import styles from "./styles/leftPanel.module.css";
 import { FaBars, FaTimes } from 'react-icons/fa'; // react-icons
@@ -20,7 +21,8 @@ const LeftPanel = () => {
   if (isMobile) {
     return (
       <header className={styles.mobileHeader}>
-        <div className={styles.logo}>Habit Tracker</div>
+        {/* <div className={styles.logo}>Habit Tracker</div> */}
+        <Link href="/" className={styles.logo}>Habit Tracker</Link>
         <button onClick={toggleMenu} className={styles.hamburgerBtn}>
           {menuOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
         </button>
@@ -44,7 +46,8 @@ const LeftPanel = () => {
 
   return (
     <aside className={styles.leftPanel}>
-      <div className={styles.logo}>Habit Tracker</div>
+      {/* <div className={styles.logo}>Habit Tracker</div> */}
+      <Link href="/" className={styles.logo}>Habit Tracker</Link>
       <nav className={styles.nav}>
         <ul>
           <li>Habits</li>

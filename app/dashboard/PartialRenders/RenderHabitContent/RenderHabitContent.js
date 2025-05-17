@@ -1,4 +1,14 @@
 'use client';
+// app/dashboard/PartialRenders/RenderHabitContent/RenderHabitContent.js
+// This component is responsible for rendering the list of habits in the dashboard.
+// It fetches the habits from the server and displays them in either a grid or list layout.
+// The component also includes a floating action button for creating new habits and categories.
+// The component uses the HabitContext to manage the state of the habits and the RightPanelContext to manage the visibility of the right panel.
+// The component uses the useSession hook from next-auth to check the user's authentication status and fetch their habits.
+// The component also includes a layout toggle button to switch between grid and list views.
+// The component uses the useEffect hook to fetch the habits and preferences from the server when the component mounts.
+// The component also includes a resize event listener to update the layout based on the screen size.
+// The component uses the useState hook to manage the loading state and the layout type.
 import React, { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useHabitContext } from '../../../../context/HabitContext';
@@ -7,7 +17,6 @@ import HabitCard from '../../../components/HabitCard/HabitCard';
 import FloatingActionButton from '../../../components/FloatingActionButton/FloatingActionButton';
 import styles from './styles/RenderHabitContent.module.css';
 import { FaThList, FaThLarge } from 'react-icons/fa';
-import { MdViewColumn } from 'react-icons/md';
 
 const RenderHabitContent = ({ onTitleClick }) => {
   const { data: session } = useSession();
