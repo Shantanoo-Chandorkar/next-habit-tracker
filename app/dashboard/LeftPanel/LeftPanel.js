@@ -11,8 +11,8 @@ const LeftPanel = () => {
       <nav className={styles.nav}>
         <ul>
           <li>Habits</li>
-          <li>Categories</li>
-          <li>Statistics</li>
+          <li>Categories <span className={styles.comingSoon}>Coming Soon</span></li>
+          <li>Statistics <span className={styles.comingSoon}>Coming Soon</span></li>
           <li onClick={() => signOut({ callbackUrl: '/' })}>Logout</li>
         </ul>
       </nav>
