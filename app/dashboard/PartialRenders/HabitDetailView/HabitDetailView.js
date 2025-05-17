@@ -13,7 +13,7 @@ const HabitDetailView = ({ habit, onBack }) => {
   const today = new Date();
   const [view, setView] = useState('monthly');
   const [selectedMonth, setSelectedMonth] = useState(today.getMonth());
-  const [selectedYear, setSelectedYear] = useState(today.getFullYear());
+  const [selectedYear, setSelectedYear] = useState(today.getUTCFullYear());
 
   const [habitData, setHabitData] = useState(habit);
 

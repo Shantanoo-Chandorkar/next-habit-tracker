@@ -52,3 +52,10 @@
     padding: 0.5rem;
   }
 }
+
+.comingSoon {
+  font-size: 0.9rem;
+  color: #ffcc00;
+  text-align: center;
+  margin-top: 1rem;
+}
