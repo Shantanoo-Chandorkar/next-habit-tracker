@@ -27,7 +27,7 @@ export async function PATCH(req) {
   }
 
   const body = await req.json();
-  const { type, columns } = body.layout;
+  const { type } = body.layout;
 
   if (!['list', 'grid'].includes(type)) {
     return new NextResponse(JSON.stringify({ error: 'Invalid layout type' }), { status: 400 });
@@ -38,7 +38,6 @@ export async function PATCH(req) {
     {
       layout: {
         type,
-        columns: type === 'grid' ? columns : 0, // or default 2 if needed
       },
     },
     { upsert: true, new: true }

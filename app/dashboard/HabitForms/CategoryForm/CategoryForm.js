@@ -30,6 +30,7 @@ const CategoryForm = ({ editData }) => {
     if (res.ok) {
       setMessage(editData ? 'Category updated!' : 'Category created!');
       setName('');
+      if (typeof onSubmit === 'function') onSubmit(); // closes the panel
     } else {
       setMessage('Something went wrong.');
     }
