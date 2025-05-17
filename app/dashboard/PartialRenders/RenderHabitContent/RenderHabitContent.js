@@ -14,7 +14,7 @@ const RenderHabitContent = ({ onTitleClick }) => {
   const { state, dispatch } = useHabitContext();
   const { showHabitForm, showCategoryForm } = useRightPanel();
   const [loading, setLoading] = useState(false);
-  const [layout, setLayout] = useState('list');
+  const [layout, setLayout] = useState('');
 
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
