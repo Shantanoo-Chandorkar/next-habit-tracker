@@ -77,12 +77,6 @@
   background-color: #f0f0f0;
 }
 
-.consistency {
-  display: flex;
-  gap: 6px;
-  margin-top: 6px;
-}
-
 .dot {
   width: 10px;
   height: 10px;
@@ -93,4 +87,27 @@
 
 .filled {
   background: #4caf50;
+}
+
+@media (max-width: 540px) {
+  .card {
+    padding: 6px;
+    margin: 6px;
+  }
+
+  .checkbox {
+    margin-right: 6px;
+    width: 8px;
+    height: 8px;
+  }
+
+  .title {
+    font-size: 0.8rem;
+  }  
+
+  .dot {
+    width: 6px;
+    height: 6px;
+  }
+
 }

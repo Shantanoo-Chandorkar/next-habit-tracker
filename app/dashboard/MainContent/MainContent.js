@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHabitContext } from '../../../context/HabitContext';
 import RenderHabitContent from '../PartialRenders/RenderHabitContent/RenderHabitContent';
 import HabitDetailView from '../PartialRenders/HabitDetailView/HabitDetailView';
@@ -11,6 +11,15 @@ const MainContent = () => {
   // const currentView = 'habits';
   const [selectedHabit, setSelectedHabit] = useState(null);
   const currentView = 'habits';
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const update = () => setIsMobile(window.innerWidth <= 1024);
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
 
   return (
     <div className={styles.mainContent}>

@@ -99,8 +99,8 @@
 
 .habitList.grid {
   display: grid;
-  grid-template-columns: repeat(var(--columns), 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0rem;
   margin-top: 20px;
   animation: fadeIn 0.4s ease-in;
   transition: all 0.3s ease;

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './styles/newHabitForm.module.css';
 import { useHabitContext } from '../../../../context/HabitContext';
 
-const HabitForm = ({ editData }) => {
+const HabitForm = ({ editData, onSuccess }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [frequency, setFrequency] = useState('Daily'); // Default frequency
@@ -52,9 +52,11 @@ const HabitForm = ({ editData }) => {
     if (res.ok) {
       const payload = await res.json();
       dispatch({ type: editData ? 'UPDATE_HABIT' : 'ADD_HABIT', payload });
-      setTitle(editData ? title : '');
-      setCategoryId(editData ? categoryId : '');
       setMessage(editData ? 'Habit updated!' : 'Habit created!');
+      if (!editData) {
+        onSuccess(); // this closes the panel
+      }
+      if (typeof onSubmit === 'function') onSubmit(); // this closes the panel
     } else {
       setMessage('Something went wrong.');
     }

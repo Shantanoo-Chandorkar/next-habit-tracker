@@ -15,7 +15,16 @@ const RenderHabitContent = ({ onTitleClick }) => {
   const { showHabitForm, showCategoryForm } = useRightPanel();
   const [loading, setLoading] = useState(false);
   const [layout, setLayout] = useState('list');
-  const [columns, setColumns] = useState(2);
+
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const update = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
 
   useEffect(() => {
     if (!session) return;
@@ -32,7 +41,6 @@ const RenderHabitContent = ({ onTitleClick }) => {
         if (prefsRes.ok) {
           const prefs = await prefsRes.json();
           if (prefs.layout?.type) setLayout(prefs.layout.type);
-          if (prefs.layout?.columns) setColumns(prefs.layout.columns);
         }
       } catch (err) {
         console.error(err);
@@ -46,32 +54,16 @@ const RenderHabitContent = ({ onTitleClick }) => {
 
   const toggleLayout = async () => {
     const newLayout = layout === 'list' ? 'grid' : 'list';
-    const newColumns = newLayout === 'grid' ? columns : 0;
     setLayout(newLayout);
 
     try {
       await fetch('/api/preferences', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ layout: { type: newLayout, columns: newColumns } }),
+        body: JSON.stringify({ layout: { type: newLayout } }),
       });
     } catch (err) {
       console.error('Failed to update layout preference:', err);
-    }
-  };
-
-  const handleColumnChange = async (e) => {
-    const newColumns = parseInt(e.target.value);
-    setColumns(newColumns);
-
-    try {
-      await fetch('/api/preferences', {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ layout: { type: 'grid', columns: newColumns } }),
-      });
-    } catch (err) {
-      console.error('Failed to update columns:', err);
     }
   };
 
@@ -80,26 +72,15 @@ const RenderHabitContent = ({ onTitleClick }) => {
       <div className={styles.header}>
         <h2>All Habits</h2>
         <div className={styles.layoutOptions}>
-          <button onClick={toggleLayout} title="Toggle Layout">
+          <button type='button' onClick={toggleLayout} title="Toggle Layout">
             {layout === 'list' ? <FaThLarge /> : <FaThList />}
           </button>
-          {layout === 'grid' && (
-            <div className={styles.columnSelector}>
-              <MdViewColumn />
-              <select onChange={handleColumnChange} value={columns}>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-              </select>
-            </div>
-          )}
         </div>
       </div>
 
       <ul
-        key={`${layout}-${columns}`} // 👈 this forces a re-render when layout or columns change
+        key={`${layout}`} // 👈 this forces a re-render when layout or columns change
         className={`${styles.habitList} ${layout === 'grid' ? styles.grid : styles.list}`}
-        style={layout === 'grid' ? { '--columns': columns } : {}}
       >
         {state.habits.length === 0 && !loading ? (
           <li key={0}><p>No habits found. Create a new habit!</p></li>

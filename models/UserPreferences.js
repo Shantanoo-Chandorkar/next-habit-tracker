@@ -10,10 +10,6 @@ const UserPreferencesSchema = new mongoose.Schema({
       enum: ['list', 'grid'],
       default: 'list',
     },
-    columns: {
-      type: Number,
-      default: 2, // Will only matter if type is 'grid'
-    },
   },
 }, { timestamps: true });
 

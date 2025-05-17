@@ -17,8 +17,13 @@ export const RightPanelProvider = ({ children }) => {
     setPanelContent('newCategory');
   };
 
+  const clearPanel = () => {
+    setEditData(null);
+    setPanelContent(null);
+  };
+
   return (
-    <RightPanelContext.Provider value={{ panelContent, showHabitForm, showCategoryForm, editData }}>
+    <RightPanelContext.Provider value={{ panelContent, showHabitForm, showCategoryForm, editData, clearPanel }}>
       {children}
     </RightPanelContext.Provider>
   );
